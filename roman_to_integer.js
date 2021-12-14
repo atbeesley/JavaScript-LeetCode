@@ -1,7 +1,5 @@
 var romanToInt = function(s) {
     
-    let acc = 0;
-    
     const hash = {
         "I":1,
         "V":5,
@@ -12,11 +10,22 @@ var romanToInt = function(s) {
         "M":1000
     }
     
+    let acc = 0;
+    
     for(let i = 0; i < s.length; i++){
         
-         acc += hash[s[i]]
+        let current = s[i];
+        let currentValue = hash[current];   
+        let next = s[i+1];
+        let nextValue = hash[next];
+        
+        if(currentValue>=nextValue){
+            acc += currentValue
+        } else if(currentValue<nextValue){
+            acc -= currentValue
+        } else if(currentValue && !nextValue){
+            acc += currentValue
+        }
     }
-    
     return acc;
-    
 };

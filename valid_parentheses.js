@@ -2,20 +2,25 @@
  * @param {string} s
  * @return {boolean}
  */
-var isValid = function(s) {
-    if(
-        !s.includes("(") && !s.includes(")") || 
-        !s.includes("[") && !s.includes("]") ||
-        !s.includes("{") && !s.includes("}")
-    ){
-        return true;
-    } else if(s.includes("(") && s.includes(")")){
-        return true;
-    } else if(s.includes("[") && s.includes("]")){
-        return true;
-    } else if(s.includes("{") && s.includes("}")){
-        return true;
-    } else {
-        return false;
+var isValid = function (s) {
+  let stack = [];
+  for (i = 0; i < s.length; i++) {
+    let curChar = s[i];
+
+    switch (curChar) {
+      case "(":
+        stack.push(")");
+        break;
+      case "[":
+        stack.push("]");
+        break;
+      case "{":
+        stack.push("}");
+        break;
+      default:
+        topElement = stack.pop();
+        if (curChar !== topElement) return false;
     }
+  }
+  return stack.length === 0;
 };

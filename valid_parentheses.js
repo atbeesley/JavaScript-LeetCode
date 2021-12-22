@@ -3,7 +3,13 @@
  * @return {boolean}
  */
 var isValid = function(s) {
-    if(s.includes("(") && s.includes(")")){
+    if(
+        !s.includes("(") && !s.includes(")") || 
+        !s.includes("[") && !s.includes("]") ||
+        !s.includes("{") && !s.includes("}")
+    ){
+        return true;
+    } else if(s.includes("(") && s.includes(")")){
         return true;
     } else if(s.includes("[") && s.includes("]")){
         return true;

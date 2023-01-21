@@ -1,17 +1,15 @@
 var maximumCount = function(nums) {
 
-    let pos = [];
-    let neg = [];
+    let pos = 0;
+    let neg = 0;
 
     for(let i of nums){
         if(i>0){
-            pos.push(i);
+            pos += 1;
         }else if(i<0){
-            neg.push(i);
+            neg += 1;
         }
     }
 
-    const masterArray = [[...pos], [...neg]];
-    const lengths = masterArray.map(a=>a.length);
-    return Math.max(...lengths);
+    return Math.max(pos, neg);
 };
